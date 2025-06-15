@@ -8,7 +8,6 @@ load_dotenv()
 
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 API_KEY = os.getenv("API_KEY")
-API_URL = "https://brawlhalla.solarauth.workers.dev/2515133"  
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -16,7 +15,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 def get_clan_data():
     headers = {"Authorization": f"Bearer {API_KEY}"} 
-    response = requests.get(API_URL, headers=headers)
+    response = requests.get(API_KEY, headers=headers)
     if response.status_code == 200:
         return response.json()
     else:
