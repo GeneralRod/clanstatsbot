@@ -15,12 +15,12 @@ intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 def get_clan_data():
-    headers = {"Authorization": f"Bearer {API_KEY}"}  # als je API auth nodig heeft
+    headers = {"Authorization": f"Bearer {API_KEY}"} 
     response = requests.get(API_URL, headers=headers)
     if response.status_code == 200:
         return response.json()
     else:
-        print(f"Fout bij ophalen API: {response.status_code}")
+        print(f"Error collecting API: {response.status_code}")
         return None
 
 @bot.event
