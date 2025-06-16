@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Ranking 1v1 - Week <span id="week-number"></span></h1>
+        <table id="leaderboard">
+            <thead>
+                <tr>
+                    <th>Lp.</th>
+                    <th>Name</th>
+                    <th>Rating</th>
+                    <th>Peak</th>
+                    <th>Wins</th>
+                    <th>Games</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filled dynamically by Puppeteer -->
+            </tbody>
+        </table>
+    </div>
+    <script src="../src/render.js"></script>
+    <script>
+        // Get current week number
+        function getWeekNumber(d) {
+            d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+            d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+            const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+            return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        }
+        
+        // Set the week number in the header
+        document.getElementById('week-number').textContent = getWeekNumber(new Date());
+    </script>
+</body>
+</html>

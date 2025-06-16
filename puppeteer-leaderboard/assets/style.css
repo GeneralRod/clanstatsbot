@@ -1,0 +1,70 @@
+body {
+    background: url('../assets/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 16px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+thead {
+    background-color: #005c97;
+    position: sticky;
+    top: 0;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Zorg dat de tabel responsive is */
+@media screen and (max-width: 1200px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    table {
+        font-size: 16px;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+}

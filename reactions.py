@@ -9,22 +9,13 @@ class Reactions(commands.Cog):
         if message.author == self.bot.user:
             return
 
-        if 'nigger' in message.content.lower():
+        if 'nig' in message.content.lower():
             await message.channel.send("🐒")
 
-        if 'nigga' in message.content.lower():
-            await message.channel.send("🐒")
+            
+        if 'jane' in message.content.lower():
+            await message.channel.send("https://only-fans.uk/JaneLeak")
 
-        if 'niggers' in message.content.lower():
-            await message.channel.send("🐒")
-
-        if 'niggas' in message.content.lower():
-            await message.channel.send("🐒")
-
-        if 'niggr' in message.content.lower():
-            await message.channel.send("🐒")
-
-        await self.bot.process_commands(message)
 
 async def setup(bot):
     await bot.add_cog(Reactions(bot))
