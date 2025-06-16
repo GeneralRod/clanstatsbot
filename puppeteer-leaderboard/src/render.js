@@ -6,9 +6,22 @@ const path = require('path');
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 (async () => {
-    // Correct pad naar week23.json, relatief aan deze file
-    const dataPath = path.resolve(__dirname, '../data/week23.json');
-    const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+    // Get the current week's data using environment variable
+    const currentWeek = process.env.CURRENT_WEEK || '25'; // Fallback to 25 if not set
+    const currentWeekPath = path.resolve(__dirname, `../data/week${currentWeek}.json`);
+    const currentData = JSON.parse(fs.readFileSync(currentWeekPath, 'utf-8'));
+
+    // Debug logging
+    console.log('\n=== DEBUG: Rendering Leaderboard ===');
+    console.log('Current week:', currentWeek);
+    console.log('Number of players:', currentData.length);
+    console.log('\nFirst few players:');
+    currentData.slice(0, 3).forEach(player => {
+        console.log(`\nPlayer: ${player.name}`);
+        console.log(`  Rating: ${player.rating}`);
+        console.log(`  Rating diff: ${player.rating_diff}`);
+        console.log(`  User ID: ${player.user_id}`);
+    });
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -34,7 +47,7 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
             `;
             tbody.appendChild(row);
         });
-    }, data);
+    }, currentData);
 
     // Wacht even om er zeker van te zijn dat alle rijen zijn gerenderd
     await delay(1000);
@@ -58,5 +71,8 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
         omitBackground: true
     });
 
+    console.log('\n=== Rendering Complete ===');
+    console.log(`Screenshot saved to: ${screenshotPath}`);
+
     await browser.close();
-})();
+})(); 
