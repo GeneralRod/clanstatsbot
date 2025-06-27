@@ -9,10 +9,12 @@ class Reactions(commands.Cog):
         if message.author == self.bot.user:
             return
 
-        if 'nig' in message.content.lower():
+        if 'nigga' in message.content.lower():
             await message.channel.send("🐒")
 
-            
+        if 'nigger' in message.content.lower():
+            await message.channel.send("🐒")
+
         if 'jane' in message.content.lower():
             await message.channel.send("https://only-fans.uk/JaneLeak")
 
